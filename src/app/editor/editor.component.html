@@ -1,0 +1,43 @@
+<div *ngIf="subscription" class="container">
+    <form (ngSubmit)="onSubmit()" #editorForm="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="subscription.name"
+                #name="ngModel">
+            <div class="alert alert-danger" [hidden]="name.valid||name.pristine">Name is required</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="subscription.email"
+                #email="ngModel">
+            <div class="alert alert-danger" [hidden]="email.valid||email.pristine">Email is invalid</div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" required [(ngModel)]="subscription.phone"
+                #phone="ngModel">
+            <div class="alert alert-danger" [hidden]="phone.valid||phone.pristine">Phone is required</div>
+        </div>
+        <div class="form-group">
+            <label for="training">Training</label>
+            <select class="form-control" name="training" id="training" [(ngModel)]="subscription.training" required
+                #training="ngModel">
+                <option value=".NET">.NET</option>
+                <option value="Java">Java</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Scala">Scala</option>
+            </select>
+            <div class="alert alert-danger" [hidden]="training.valid||training.pristine">Training is required</div>
+        </div>
+        <div class="form-group">
+            <label for="comments">Comments</label>
+            <textarea class="form-control" name="comments" id="comments" rows="3"
+                [(ngModel)]="subscription.comments"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!editorForm.form.valid">Save</button>
+        <button type="button" class="btn btn-default" (click)="editorForm.reset()">Reset</button>
+    </form>
+    <hr>
+    <button type="button" class="btn btn-warning" (click)="onCancel()">View all subscriptions</button>
+</div>

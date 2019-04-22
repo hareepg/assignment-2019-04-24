@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>List of subscriptions</h1>
+    <button class="btn btn-success" (click)="initializeNew()">Create a new subscription</button>
+    <hr>
+    <table [hidden]="!subscriptions || !subscriptions.length" class="table table-striped table-bordered table-hover">
+        <thead>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Training</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let subscription of subscriptions; index as position">
+                <td>{{subscription.email}}</td>
+                <td>{{subscription.name}}</td>
+                <td>{{subscription.training}}</td>
+                <td>
+                    <button class="btn btn-info" (click)="initializeEdit(subscription, position)">Edit</button>
+                    <button class="btn btn-danger" (click)="initializeDelete(position)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div [hidden]="subscriptions && subscriptions.length" class="card">
+        <div class="card-body">
+            No subscriptions registered yet.
+        </div>
+    </div>
+</div>

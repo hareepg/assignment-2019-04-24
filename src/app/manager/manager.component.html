@@ -1,0 +1,7 @@
+<div class="container">
+    <list [hidden]="subscriptionUnderEdit" [subscriptions]="subscriptions" (create)="create($event)"
+        (edit)="edit($event)" (delete)="delete($event)"></list>
+    <editor [hidden]="!subscriptionUnderEdit" [subscription]="subscriptionUnderEdit" (cancel)="onCancel($event)"
+        (save)="save($event)">
+    </editor>
+</div>
